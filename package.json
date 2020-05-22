@@ -1,0 +1,19 @@
+{
+  "name": "userstories",
+  "version": "1.0.0",
+  "description": "API endpoints for teachers and students. Built using ExpressJS, MariaDB and docker.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jingherng/userstories.git"
+  },
+  "author": "pow jing herng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jingherng/userstories/issues"
+  },
+  "homepage": "https://github.com/jingherng/userstories#readme"
+}
