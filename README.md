@@ -11,12 +11,12 @@ Administrative database and server for teachers and students developed using Nod
 
 ### Versioning
 
-nodejs: 14.2.0
-express: 4.17.1
-mariadb: 2.3.1
-supertest: 4.0.2
-jest: 26.0.1
-docker: 19.03.8-ce, build afacb8b7f0
+nodejs: 14.2.0  
+express: 4.17.1  
+mariadb: 2.3.1  
+supertest: 4.0.2  
+jest: 26.0.1  
+docker: 19.03.8-ce, build afacb8b7f0  
 
 ### Installing & Deploying
 
@@ -40,8 +40,11 @@ exit out of mariadb shell
 
 npm i
 
-##### To run tests, enter "npm run test-dev" #####
+##### To run Jest, enter "npm run test-dev" ##### 
+(Jest testing is done according to requirements based on docx)
 ##### To run server, enter "npm start" ####
+
+
 
 ### Authors ####
 * **Pow Jing Herng** - (https://github.com/jingherng).
