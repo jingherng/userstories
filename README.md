@@ -30,8 +30,8 @@ Refer to https://docs.docker.com/get-docker/
 docker container run -p 3306:3306 -d --name mariaDB -e MARIADB_ROOT_PASSWORD=toor mariadb/server  
 docker container exec -it mariaDB bash  
 mariadb  
-CREATE DATABASE demo;  
-USE demo;  
+create database demo;  
+use demo;  
 create table suspended (student varchar(100) not null primary key);  
 create table registered (teacher VARCHAR(100), students varchar(100), primary key (teacher, students));  
 
