@@ -6,8 +6,8 @@ describe('POST /api/register', () => {
         const res = await request(server)
             .post('/api/register')
             .send({
-                "teacher": "teacherken@gmail.com",
-                "students":
+                teacher: "teacherken@gmail.com",
+                students:
                     [
                         "student1@gmail.com",
                         "student2@gmail.com"
@@ -23,7 +23,7 @@ describe('GET /api/commonstudents', () => {
             .get('/api/commonstudents?teacher=teacherken@gmail.com');
         expect(res.status).toBe(200);
         expect(res.body).toEqual({
-            "students": [
+            students: [
                 "student1@gmail.com",
                 "student2@gmail.com"
             ]
@@ -36,7 +36,7 @@ describe('POST /api/suspend', () => {
         const res = await request(server)
             .post('/api/suspend')
             .send({
-                "student": "student1@gmail.com"
+                student: "student1@gmail.com"
             })
         expect(res.status).toBe(204);
     });
@@ -52,10 +52,10 @@ describe('POST /api/retrievefornotifications', () => {
             });
         expect(res.status).toBe(200);
         expect(res.body).toEqual({
-            "recipients":
+            recipients:
             [
                 "student3@gmail.com",
-                "student2@gmail.com",
+                "student2@gmail.com"
             ]
         });
     });

@@ -91,7 +91,7 @@ app.post('/api/retrievefornotifications', async (req, res) => {
 
         for (i = 0; i < studentList.length; i++) {
             let student = studentList[i].students;
-            registered.push(`${student}`)
+            registered.push(student)
         }
 
         // get students mentioned in the notification
