@@ -22,7 +22,7 @@ app.post('/api/register', async (req, res) => {
             var query = `insert into registered values ("${valueTeacher}", "${valueStudents[i]}")`;
             await conn.query(query);
         }
-        res.send();
+        res.status(204).send();
     } catch (err) {
         console.log(`Error message: ${err.message}`);
         res.send({ message: err.message });
@@ -62,7 +62,7 @@ app.post('/api/suspend', async (req, res) => {
         var student = req.body.student;
         var query = `insert into suspended values ("${student}")`;
         await conn.query(query);
-        res.send();
+        res.status(204).send();
     } catch (err) {
         console.log(`Error message: ${err.message}`);
         res.send({ message: err.message });
@@ -120,5 +120,6 @@ app.post('/api/retrievefornotifications', async (req, res) => {
     }
 })
 
+var server = app.listen(port, () => console.log(`Listing on Port ${port}`))
 
-app.listen(port, () => console.log(`Listing on Port ${port}`))
+module.exports = server;

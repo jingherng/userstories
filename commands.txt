@@ -7,4 +7,4 @@ mysql
 CREATE DATABASE demo;
 USE demo;
 create table suspended (student varchar(100) not null primary key);
-create table registered (teacher VARCHAR(100), students varchar(100). primary key (teacher, students));
+create table registered (teacher VARCHAR(100), students varchar(100), primary key (teacher, students));
