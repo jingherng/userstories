@@ -27,6 +27,7 @@ Run following commands in CLI line by line
 Refer to https://docs.docker.com/get-docker/
 
 #### Set up Docker Image ####
+<<<<<<< HEAD
 docker container run -p 3306:3306 -d --name mariaDB -e MARIADB_ROOT_PASSWORD=toor mariadb/server
 docker container exec -it mariaDB bash
 mariadb
@@ -34,6 +35,15 @@ CREATE DATABASE demo;
 USE demo;
 create table suspended (student varchar(100) not null primary key);
 create table registered (teacher VARCHAR(100), students varchar(100), primary key (teacher, students));
+=======
+docker container run -p 3306:3306 -d --name mariaDB -e MARIADB_ROOT_PASSWORD=toor mariadb/server  
+docker container exec -it mariaDB bash  
+mariadb  
+create database demo;  
+use demo;  
+create table suspended (student varchar(100) not null primary key);  
+create table registered (teacher VARCHAR(100), students varchar(100), primary key (teacher, students));  
+>>>>>>> 5b37189631ca28e88036daeaa01f036508b5c3c8
 
 exit out of mariadb shell
 
@@ -44,4 +54,8 @@ npm i
 
 ### Authors ####
 
+<<<<<<< HEAD
 * **Pow Jing Herng** - (https://github.com/jingherng).
+=======
+* **Pow Jing Herng** - (https://github.com/jingherng).
+>>>>>>> 5b37189631ca28e88036daeaa01f036508b5c3c8
