@@ -45,7 +45,7 @@ app.get('/api/commonstudents', async (req, res) => {
             let student = studentList[i].students;
             result.push(student)
         }
-        res.send({students: result});
+        res.send({ students: result });
     } catch (err) {
         console.log(`Error message: ${err.message}`);
         res.send({ message: err.message });
@@ -76,7 +76,7 @@ app.post('/api/retrievefornotifications', async (req, res) => {
     let conn;
     try {
         conn = await pool.getConnection();
-        
+
         var teacher = req.body.teacher;
         var notification = req.body.notification;
 
@@ -99,18 +99,18 @@ app.post('/api/retrievefornotifications', async (req, res) => {
         var mentioned = notification.match(re);
 
         // join registered + mentioned & remove duplicate students into new array
-        if (mentioned !== null){
+        if (mentioned !== null) {
             var result = new Set(mentioned.concat(registered));
         } else {
             var result = new Set(registered);
         }
 
         // remove students who are suspended
-        for (i=0; i<suspended.length;i++){
+        for (i = 0; i < suspended.length; i++) {
             result.delete(suspended[i].student);
         }
 
-        res.send({recipients: [...result]});
+        res.send({ recipients: [...result] });
 
     } catch (err) {
         console.log(`Error message: ${err.message}`);
