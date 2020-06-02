@@ -22,7 +22,7 @@ app.post('/api/register', async (req, res) => {
             var query = `insert into registered values ("${valueTeacher}", "${valueStudents[i]}")`;
             await conn.query(query);
         }
-        res.status(204).send();
+        res.sendStatus(204);
     } catch (err) {
         console.log(`Error message: ${err.message}`);
         res.send({ message: err.message });
@@ -36,14 +36,37 @@ app.get('/api/commonstudents', async (req, res) => {
     let conn;
     try {
         conn = await pool.getConnection();
-        var teacher = req.query.teacher;
-        var query = `select students from registered where teacher="${teacher}"`;
+        var teachers = req.query.teacher;
+
+        let flag = 0; // flag for when teachers is just one value or a list of teachers
+        if (typeof (teachers) == 'string') {
+            var query = `select students from registered where teacher="${teachers}"`;
+        } else {
+            var query = 'select students from registered where teacher in ' + conn.escape(teachers);
+            flag = 1;
+        }
+
         var studentList = await conn.query(query);
         var result = [];
 
-        for (i = 0; i < studentList.length; i++) {
-            let student = studentList[i].students;
-            result.push(student)
+        // find students common to a given list of teachers
+        if (flag) {
+            var unique = new Set()
+            for (i = 0; i < studentList.length; i++) {
+                let student = studentList[i].students;
+
+                if (unique.has(student)) {
+                    result.push(student);
+                } else {
+                    unique.add(student);
+                }
+            }
+        } else {
+            // else just push the students into the list for just one teacher
+            for (i = 0; i < studentList.length; i++) {
+                let student = studentList[i].students;
+                result.push(student);
+            }
         }
         res.send({ students: result });
     } catch (err) {
@@ -62,7 +85,7 @@ app.post('/api/suspend', async (req, res) => {
         var student = req.body.student;
         var query = `insert into suspended values ("${student}")`;
         await conn.query(query);
-        res.status(204).send();
+        res.sendStatus(204);
     } catch (err) {
         console.log(`Error message: ${err.message}`);
         res.send({ message: err.message });
